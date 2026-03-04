@@ -14,13 +14,17 @@ async function api(action, data = {}) {
     })
   });
 
+  if (!res.ok) {
+    throw new Error("HTTP Error " + res.status);
+  }
+
   const text = await res.text();
 
   try {
     return JSON.parse(text);
-  } catch (e) {
-    console.error("❌ GAS bukan JSON:");
-    console.error(text); // tampilkan isi response asli
-    throw new Error("Server bukan JSON. Cek URL / izin deployment GAS.");
+  } catch {
+    console.error(text);
+    throw new Error("Server bukan JSON");
   }
+}
 }
