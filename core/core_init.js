@@ -16,7 +16,7 @@ sidebar.innerHTML = `
 
 function logout(){
   localStorage.clear();
-  location.href="/p/loginv1.html";
+  location.href="/p/loginv1_2.html";
 }
 
 loadPage("dashboard");
