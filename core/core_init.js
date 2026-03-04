@@ -1,6 +1,7 @@
-const username = localStorage.getItem("username") || "User";
+const sidebar = document.getElementById("sidebar");
+const welcome = document.getElementById("welcome");
 
-welcome.innerText = "Selamat datang, " + username;
+welcome.innerText = "Selamat datang, " + (localStorage.getItem("username") || "User");
 
 sidebar.innerHTML = `
 <button onclick="loadPage('dashboard')">Dashboard</button>
@@ -10,8 +11,7 @@ sidebar.innerHTML = `
 <button onclick="loadPage('kopel')">Kopel</button>
 <button onclick="loadPage('nilai')">Nilai</button>
 <button onclick="loadPage('user')">User</button>
-<button onclick="loadPage('setting')">Setting</button>
-<button onclick="loadPage('surat')">Surat</button>
+<button onclick="logout()">Logout</button>
 `;
 
 function logout(){
