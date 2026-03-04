@@ -1,4 +1,4 @@
-const WEB_APP_URL = "PASTE_WEBAPP_URL_DISINI";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzT3gnxsS5S6w7Q2hEvAk78MMiHTcvXn0BL8m1PNwoiDUpodb5Uwn43u0oLA7s6motOg/exec";
 
 const token = localStorage.getItem("token");
 
