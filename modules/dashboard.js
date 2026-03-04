@@ -17,13 +17,13 @@ registerPage("dashboard", async () => {
     // 2. Mengambil SEMUA data secara paralel (7 Request)
     // PENTING: Urutan variabel [p, k, s, jl, hl, sr, u] HARUS SAMA dengan urutan api(...)
     const [p, k, s, jl, hl, sr, u] = await Promise.all([
-      api("getData", { sheet: "PesertaLomba" }), // Index 0 -> p
-      api("getData", { sheet: "Kopel" }),        // Index 1 -> k
-      api("getData", { sheet: "Sekolah" }),      // Index 2 -> s
-      api("getJenisLomba"),                      // Index 3 -> jl
-      api("getHasilLomba"),                      // Index 4 -> hl
-      api("getSurat"),                           // Index 5 -> sr
-      api("getUser")                             // Index 6 -> u
+      api("getPesertaLomba"), // Index 0 -> p
+      api("getKopel"),        // Index 1 -> k
+      api("getSekolah"),      // Index 2 -> s
+      api("getJenisLomba"),   // Index 3 -> jl
+      api("getHasilLomba"),   // Index 4 -> hl
+      api("getSurat"),        // Index 5 -> sr
+      api("getUser")          // Index 6 -> u
     ]);
 
     // 3. Update Angka Statistik di Card
