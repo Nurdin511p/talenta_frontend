@@ -1,7 +1,5 @@
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzT3gnxsS5S6w7Q2hEvAk78MMiHTcvXn0BL8m1PNwoiDUpodb5Uwn43u0oLA7s6motOg/exec";
 
-const token = localStorage.getItem("token");
-
 async function api(action, data = {}) {
   const res = await fetch(WEB_APP_URL, {
     method: "POST",
@@ -26,5 +24,4 @@ async function api(action, data = {}) {
     console.error(text);
     throw new Error("Server bukan JSON");
   }
-}
 }
