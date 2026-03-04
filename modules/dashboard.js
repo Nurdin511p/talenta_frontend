@@ -1,4 +1,4 @@
-registerPage("dashboard", async ()=>{
+registerPage("dashboard", async () => {
 
   content.innerHTML = `
     <h2>Dashboard</h2>
@@ -9,11 +9,23 @@ registerPage("dashboard", async ()=>{
     </div>
   `;
 
-  const p = await api("getPeserta");
-  const s = await api("getSekolah");
-  const l = await api("getJenisLomba");
+  try {
+    const [p, s, l] = await Promise.all([
+      api(getData",{sheet"PesertaLomba"),
+      api("getData",{sheet:"Kopel"})
+      api("getData",{sheet:"Sekolah"})
+      api("getData",{sheet:"JenisLomba"})
+      api("getData",{sheet:"HasilLomba"})
+      api("getData",{sheet:"Surat"})
+      api("getData",{sheet:"User"})
+    ]);
 
-  statPeserta.innerText = (p.data||[]).length;
-  statSekolah.innerText = (s.data||[]).length;
-  statLomba.innerText = (l.data||[]).length;
+    document.getElementById("statPeserta").textContent = (p.data || []).length;
+    document.getElementById("statSekolah").textContent = (s.data || []).length;
+    document.getElementById("statLomba").textContent   = (l.data || []).length;
+
+  } catch (err) {
+    console.error("Dashboard error:", err);
+  }
+
 });
