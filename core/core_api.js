@@ -3,14 +3,24 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzT3gnxsS5S6w7Q2hE
 const token = localStorage.getItem("token");
 
 async function api(action, data = {}) {
-  const fd = new URLSearchParams();
-  fd.append("action", action);
-  fd.append("data", JSON.stringify({ token, ...data }));
-
   const res = await fetch(WEB_APP_URL, {
     method: "POST",
-    body: fd
+    body: new URLSearchParams({
+      action,
+      data: JSON.stringify({
+        ...data,
+        token: localStorage.getItem("token")
+      })
+    })
   });
 
-  return await res.json();
+  const text = await res.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    console.error("❌ GAS bukan JSON:");
+    console.error(text); // tampilkan isi response asli
+    throw new Error("Server bukan JSON. Cek URL / izin deployment GAS.");
+  }
 }
